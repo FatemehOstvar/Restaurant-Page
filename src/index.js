@@ -32,7 +32,7 @@ const bttns=[homeButton,menuButton,contactButton]
 
 nav.append(...bttns);
 header.append(nav)
-nav.addEventListener('click', (e)=> {
+nav.addEventListener('click', async (e)=> {
         if (e.target.matches('button')){
             const btn = e.target;
             // console.log(btn) // <button>menu<button>
@@ -50,7 +50,7 @@ nav.addEventListener('click', (e)=> {
             }
         }
     })
-
+// Todo : use promises to prevent race condition pertaining to successive clicks
 homeButton.click()
 
 function removepage(page){
