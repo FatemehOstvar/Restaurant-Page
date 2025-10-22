@@ -1,0 +1,16 @@
+nav{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+nav>* {
+    padding: 17px;
+    border-radius: 10px;
+    background-color: #ffe0cf;
+    font-size: 30px;
+    border: none;
+}
+
+nav>#menuButton, nav>#homeButton, nav>#contactButton{
+    box-shadow: 0 0 9px 3px #ff5a00;
+}
