@@ -1,19 +1,36 @@
-import {appendChildren} from "./handy";
+export async function menu(menuC) {
+  const content = document.querySelector('#content');
 
-function print(){
+  if (menuC.hasChildNodes()) return; // prevent duplicates
 
-const content = document.querySelector('#content')
-content.textContent=''
-const nav = document.createElement('nav')
-const navButton_1 = document.createElement('button')
-const menuButton = document.createElement('button')
-menuButton.id= "menuButton"
-const navButton_3 = document.createElement('button')
+  try {
+    // Create 10 fetch requests in parallel
+    const requests = [
+  fetch('https://www.themealdb.com/api/json/v1/1/filter.php?c=Vegan')
+    .then(res => res.json())
+    .then(data => data.meals)
+];
 
-navButton_1.textContent= "Home";
-menuButton.textContent= "Menu";
-navButton_3.textContent= "Contact Us"
-appendChildren(nav,navButton_1,menuButton,navButton_3);
-appendChildren(content, nav);
+    const [meals] = await Promise.all(requests);
+
+    // Build each meal’s DOM and append
+    meals.forEach(meal => {
+      const title = document.createElement('p');
+      const img = document.createElement('img');
+
+      title.textContent = meal.strMeal;
+      img.src = meal.strMealThumb;
+      img.alt = meal.strMeal;
+
+      const mealCard = document.createElement('div');
+      mealCard.classList.add('mealCard');
+      mealCard.append(title, img);
+
+      menuC.appendChild(mealCard);
+    });
+
+    content.appendChild(menuC);
+  } catch (err) {
+    console.error('Error fetching meals:', err);
+  }
 }
-export {print}

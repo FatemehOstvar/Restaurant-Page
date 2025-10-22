@@ -1,3 +1,30 @@
+:root{
+    --theme1 : #4CAF50;
+    --theme2 : #fafffe;
+    --theme3 : #1B5E20;
+    --theme5: #e7ff8c;
+    --theme4: #eee;
+
+}
+
+html{
+    box-sizing: border-box;
+    font-size: 30px;
+    font-family: 'Poppins', 'Helvetica Neue', Arial, sans-serif;
+
+}
+@font-face {
+  font-family: 'Poppins';
+  src: url('./fonts/Poppins/Poppins-Medium.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+}
 nav{
     display: flex;
     justify-content: center;
@@ -5,12 +32,110 @@ nav{
 }
 nav>* {
     padding: 17px;
+    font-size: 100%;
     border-radius: 10px;
-    background-color: #ffe0cf;
-    font-size: 30px;
+    background-color: var(--theme2);
     border: none;
 }
 
-nav>#menuButton, nav>#homeButton, nav>#contactButton{
-    box-shadow: 0 0 9px 3px #ff5a00;
+nav>#menu, nav>#home, nav>#contact{
+    box-shadow: 0 0 9px 6px var(--theme1);
+}
+#content{
+    margin-top: 2vh;
+    background-color: var(--theme4);
+}
+#homeC,#menuC,#contactC{
+  /*background-image: url("./img/home_img.jpg") ;*/
+  /*  position: relative;*/
+  /*background-size: contain;*/
+
+  border-radius: 40px ;
+  background-repeat: no-repeat;
+
+    width: 80dvw;
+    margin: 10dvw;
+}
+
+
+/*}#homeC{*/
+
+
+#menuC{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)) ;
+    gap: 1rem;
+}
+/*#menuC {*/
+/*  display: grid;*/
+/*  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));*/
+/*  gap: 1.25rem;              !* 20px-ish *!*/
+/*  justify-items: start;      !* 'baseline' is for text; start is sane *!*/
+/*  align-items: start;*/
+/*  padding: 1rem;*/
+/*  max-width: 1200px;         !* optional container cap *!*/
+/*             !* center container *!*/
+/*}*/
+
+#menuC>*{
+    text-align: center;
+    border-radius: 23px;
+    border: 4px solid  var(--theme3);
+}
+footer{
+    text-align: center;
+}
+
+.centeredText{
+    text-align: center;
+}
+.theme1{
+    background-color: var(--theme2);
+}
+#frontPage {
+  width: 100%;
+
+  height: 80vh;
+  object-fit: cover;
+  display: block;
+}
+
+.mealCard{
+    background-color:  var(--theme2);
+    font-weight: normal;
+}
+.mealCard img{
+  width: 100%;
+  height: auto;
+
+}
+
+#wall{
+      width: 100%;
+  height: auto;
+    display: block;
+}
+
+a{
+    text-decoration: none;
+    color: var(--theme3);
+}
+
+#contactC>figure>img{
+    position: relative;
+    top: 10px;
+    width: 100%;
+    border-radius: 10px;
+}
+.contact_text {
+  white-space: pre-line;
+  padding-left: 40px;
+    font-size:  150%;
+    line-height: 60px;
+}
+
+figcaption{
+    margin-top: 10px;
+    opacity:80%;
+    font-size: 60%;
 }
